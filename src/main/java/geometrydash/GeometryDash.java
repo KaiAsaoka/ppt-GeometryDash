@@ -2,6 +2,8 @@ package geometrydash;
 
 import java.util.Set;
 
+import static java.lang.Character.getNumericValue;
+
 public class GeometryDash {
     /**
      * Returns whether the given level can be completed using the given play.
@@ -11,7 +13,21 @@ public class GeometryDash {
      */
     public static boolean isSuccessfulPlay(String level, String play) {
         // TODO: Implement this method
-        return false;
+        int currentPos = 0;
+
+        int moveNumber = 0;
+
+        while(currentPos < level.length()-1){
+            if (level.charAt(currentPos) == '^') {
+                return false;
+            }
+            char move = play.charAt(moveNumber);
+            int currentmove = getNumericValue(move);
+            currentPos += currentmove;
+            moveNumber++;
+        }
+
+        return true;
     }
 
     /**
